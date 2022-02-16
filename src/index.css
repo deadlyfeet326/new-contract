@@ -75,6 +75,12 @@ body {
   text-align: center;
 }
 
+.launchNotes {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
 .contractContainer {
   max-width: 1000px;
   margin: 20px auto;

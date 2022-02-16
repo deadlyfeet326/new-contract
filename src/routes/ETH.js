@@ -12,7 +12,7 @@ import io from 'socket.io-client'
 //const socket = io.connect('http://localhost:5000')
 const socket = io.connect('https://new-contract.herokuapp.com/')
 
-function BSC() {
+function ETH() {
     const[showAddLaunch, setShowAddLaunch] = useState(false)
     const[showFilters, setShowFilters] = useState(false)
     const[contracts, setContracts] = useState([])
@@ -22,27 +22,21 @@ function BSC() {
 
     useEffect(() => {
         
-        getContracts()
-        getSchedule()
+        fetchContracts()
+        fetchSchedule()
 
     }, [])
 
-    const getContracts = async () => {
-        fetchContracts()
-    }
-    const getSchedule = async () => {
-        fetchSchedule()
-    }
 
     socket.on('schedule', ({ data }) => {
         setLaunches(data)
     })
 
-    socket.on('request', ({ data }) => {
+    socket.on('requestEth', ({ data }) => {
         setContracts(data)
     })
 
-    socket.on('newContract', ( { data }) => {
+    socket.on('newContractEth', ( { data }) => {
         setContracts(data.map((contract) => checkFilters(filters.name, filters.decimals, filters.supply ,
             filters.date, contract) ? {...contract, nameFilter : true} : {...contract, nameFilter : false}))
     })
@@ -52,7 +46,7 @@ function BSC() {
     })
 
     const fetchContracts = async () => {
-        let chain = "bsc"
+        let chain = "eth"
         socket.emit('request', { chain } )
     }
 
@@ -155,4 +149,4 @@ function BSC() {
 }
 
 
-export default BSC
+export default ETH

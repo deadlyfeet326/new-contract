@@ -4,6 +4,7 @@ const LaunchForm = ({ addLaunch }) => {
   const[name, setName] = useState('')
   const[dateTime, setDateTime] = useState('')
   const[link, setLink] = useState('')
+  const[info, setInfo] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -15,7 +16,8 @@ const LaunchForm = ({ addLaunch }) => {
     let data = {
       name: name,
       dateTime : projectSeconds,
-      link: link
+      link: link,
+      info: info
     }
 
     addLaunch(data)
@@ -23,6 +25,7 @@ const LaunchForm = ({ addLaunch }) => {
     setName('')
     setDateTime('')
     setLink('')
+    setInfo('')
   }
 
   return (
@@ -41,6 +44,11 @@ const LaunchForm = ({ addLaunch }) => {
           <label htmlFor="">Link</label>
           <br />
           <input type="text" id='link' placeholder="Add Link To Project" value={link} onChange={(e) => setLink(e.target.value)}/>
+        </div>
+        <div>
+          <label htmlFor=""> Info </label>
+          <br />
+          <textarea name="Info" id="" cols="30" rows="10" placeholder='Add info about the project' value={info} onChange={(e) => setInfo(e.target.value)}></textarea>
         </div>
 
         <input type="submit" value='Add Launch' className="btn btn-block"/>
