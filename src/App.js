@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import Home from './routes/Home'
 import ETH from './routes/ETH'
 import AVAX from './routes/AVAX'
-import { HashRouter as BrowserRouter, Routes , Route, useRoutes} from 'react-router-dom'
+import { BrowserRouter, Routes , Route, useRoutes} from 'react-router-dom'
 
 
 //const socket = io.connect('http://localhost:5000')
@@ -14,7 +14,7 @@ const[page, setPage] = useState("home")
     return (
 
         <div>
-            { page == "home" && <div>
+            {/* { page == "home" && <div>
             <button onClick={() => setPage("bsc")}> BSC </button>
             <button onClick={() => setPage("eth")}> ETH </button>
             <button onClick={() => setPage("avax")}> AVAX </button>
@@ -31,16 +31,16 @@ const[page, setPage] = useState("home")
             {
                 page == "avax" &&
                 <AVAX />
-            }
+            } */}
 
-        {/* <BrowserRouter basename='https://profoundwatcher.com' >
+        <BrowserRouter >
             <Routes>
                 <Route path="/" element ={<Home />} />
                 <Route path="/bsc" element ={<BSC />} />
                 <Route path="/eth" element = {<ETH />} />
                 <Route path="/avax" element = {<AVAX />} />
             </Routes>
-        </BrowserRouter> */}
+        </BrowserRouter>
 
     </div>
         )
